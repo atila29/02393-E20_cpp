@@ -7,7 +7,7 @@ int main() {
 
     std::cin>>n;
 
-    for(int i = 0; i<=n; i += 2)
+    for(int i = 0; i<=n; i++)
     {
         sum += i;
     }
