@@ -1,13 +1,33 @@
 #include <iostream>
 #include <cmath>
+#include <string>
 
 
-double pi(int n)
+std::string PrimeFactors(int n)
 {
-    double partial = 0;
-    for (int i = 0; i < n; i++)
-        partial += pow(-1,i)/(2.0 * i + 1);
-    return 4 * partial;
+    bool first = true;
+    std::string result;
+
+    while (n % 2 == 0)
+    {
+        result  += first? "2" : " * 2";
+        n = n/2;
+        first = false;
+    }
+    for (int i = 3; i <= sqrt(n); i = i+2)
+    {
+        while (n%i == 0)
+        {
+
+            result  += first? std::to_string(i)  : " * " + std::to_string(i);
+            n = n / i;
+            first = false;
+        }
+    }
+    if (n > 2)
+        result += first? std::to_string(n)  : " * " + std::to_string(n);
+    return result;
+
 }
 
 
@@ -17,7 +37,7 @@ int main() {
 
     std::cin>>n;
 
-    std::cout<<pi(n)<<std::endl;
+    std::cout<<PrimeFactors(n)<<std::endl;
 
     return 0;
 }
