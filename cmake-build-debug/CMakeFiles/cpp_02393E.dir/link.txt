@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/cpp_02393E.dir/main.cpp.o  -o cpp_02393E 

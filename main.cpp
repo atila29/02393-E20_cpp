@@ -1,44 +1,87 @@
 #include <iostream>
-#include <cmath>
 #include <string>
 
 
-std::string PrimeFactors(int n)
-{
-    bool first = true;
-    std::string result;
+typedef enum {
+    wood, stone
+} material;
+typedef struct {
+    int x, y;
+    bool isWall;
+    material type;
+} field;
 
-    while (n % 2 == 0)
-    {
-        result  += first? "2" : " * 2";
-        n = n/2;
-        first = false;
-    }
-    for (int i = 3; i <= sqrt(n); i = i+2)
-    {
-        while (n%i == 0)
-        {
+#define n 16
+#define m 12
 
-            result  += first? std::to_string(i)  : " * " + std::to_string(i);
-            n = n / i;
-            first = false;
+
+field playground[n][m];
+
+int x = 5, y = 5;
+
+void print_level() {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+
+            if (playground[i][j].x == x && playground[i][j].y == y) {
+                std::cout<<"0";
+            }
+            else if (playground[i][j].isWall) {
+                std::cout<<"*";
+            }
+            else {
+                std::cout<<" ";
+            }
         }
+        std::cout<<std::endl;
     }
-    if (n > 2)
-        result += first? std::to_string(n)  : " * " + std::to_string(n);
-    return result;
-
 }
 
-
 int main() {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            playground[i][j].x = i;
+            playground[i][j].y = j;
+            playground[i][j].isWall = (i == 0 || i == (n - 1) || (j == 0 && i != 3) || j == (m - 1));
+            if (playground[i][j].isWall && !(i == 3 && j == 0)) { playground[i][j].type = stone; }
+            else { playground[i][j].type = wood; }
+        }
+    }
 
-    int n;
+    std::string line;
+    while (std::getline(std::cin, line))
+    {
 
-    std::cin>>n;
+        if (line == "l")
+        {
+            y--;
+        }
+        else if (line == "r")
+        {
+            y++;
+        }
+        else if (line == "u")
+        {
+            x--;
+        }
+        else if (line == "d")
+        {
+            x++;
+        }
 
-    std::cout<<PrimeFactors(n)<<std::endl;
 
-    return 0;
+        print_level();
+
+        if (line == "q")
+        {
+            break;
+        }
+    }
+
+
+
+
+
+
 }
 
