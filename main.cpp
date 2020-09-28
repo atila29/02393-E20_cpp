@@ -8,18 +8,10 @@
 #include <map>
 #include <set>
 
-
-
-// add x
-// del x
-// qry x
-// quit
-
-
 int main() {
     std::string line;
     std::string command;
-    std::multiset<int> bag;
+    std::multiset<double> bag;
 
     while (std::getline(std::cin, line)) {
 
@@ -32,7 +24,7 @@ int main() {
                 return 0;
             }
             else {
-                int n = std::stoi(s);
+                double n = std::stod(s);
                 if(command == "add") {
                     bag.insert(n);
                 }
