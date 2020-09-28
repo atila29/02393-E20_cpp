@@ -6,47 +6,48 @@
 #include <algorithm>
 #include <cmath>
 #include <map>
+#include <set>
+
+
+
+// add x
+// del x
+// qry x
+// quit
 
 
 int main() {
-    std::vector<std::vector<int>> numbers;
     std::string line;
-    std::map<int, std::vector<int>> histogram;
-    std::vector<int> result;
-    int line_index = 1;
-
-    int l;
-    int n;
-    std::cin>>l;
-    std::cin>>n;
+    std::string command;
+    std::multiset<int> bag;
 
     while (std::getline(std::cin, line)) {
 
         std::istringstream iss(line);
         for (std::string s; iss >> s;){
-            result.push_back(stoi(s));
-            line_index++;
-        }
-        if(line_index > n)
-            break;
-
-    }
-
-    auto m = std::max_element(result.begin() , result.end()).operator[](0);
-
-    int k = ceil((double) m / (double) l);
-
-    for (int i = 0; i <= m; i += k) {
-
-        if(histogram.find(i) == histogram.end()) {
-            histogram[i] = std::vector<int>();
-        }
-        for (std::vector<int>::const_iterator v = result.begin(); v != result.end(); ++v) {
-
-            if( *v >= i && * v < i + k) {
-                histogram.at(i).push_back(*v);
+            if(s == "add" || s == "del" || s == "qry") {
+                command = s;
+            }
+            else if(s == "quit") {
+                return 0;
+            }
+            else {
+                int n = std::stoi(s);
+                if(command == "add") {
+                    bag.insert(n);
+                }
+                else if(command == "del") {
+                    bag.erase(std::remove(bag.begin(), bag.end(), n), bag.end());
+                }
+                else if(command == "qry") {
+                    if (std::find(bag.begin(), bag.end(),n) != bag.end()) {
+                        std::cout<<"T";
+                    }
+                    else {
+                        std::cout<<"F";
+                    }
+                }
             }
         }
-        std::cout << std::to_string(i) + ": " + std::to_string(histogram.at(i).size()) << std::endl;
     }
 }
