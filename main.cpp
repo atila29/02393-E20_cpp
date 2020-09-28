@@ -37,10 +37,16 @@ int main() {
                     bag.insert(n);
                 }
                 else if(command == "del") {
-                    bag.erase(std::remove(bag.begin(), bag.end(), n), bag.end());
+
+                    auto itr = bag.find(n);
+                    if(itr!=bag.end()){
+                        bag.erase(itr);
+                    }
                 }
                 else if(command == "qry") {
-                    if (std::find(bag.begin(), bag.end(),n) != bag.end()) {
+
+                    auto itr = bag.find(n);
+                    if(itr!=bag.end()){
                         std::cout<<"T";
                     }
                     else {
