@@ -36,20 +36,30 @@ int main() {
         }
     }
 
+
+
     bool test = true;
 
-    list<int> printing_set;
+    int sum = 0;
 
     while(test) {
+        int current = 1;
         for(auto it = sets.begin(); it != sets.end(); ++it) {
 
             if(!it->second.empty()) {
                 int v = *it->second.begin();
-                printing_set.insert(printing_set.end(), v);
+
+                current *= v;
+
                 it->second.erase(it->second.begin());
+            }
+            else {
+                current = 0;
             }
 
         }
+        sum  += current;
+        current = 0;
 
         test = false;
         for(auto it = sets.begin(); it != sets.end(); ++it) {
@@ -63,9 +73,7 @@ int main() {
 
     }
 
-    std::stringstream  s;
-    copy(printing_set.begin(),printing_set.end(), std::ostream_iterator<int>(s," "));
-    std::cout<<s.str();
+    cout<<sum;
 
 
 }
