@@ -7,24 +7,27 @@
 #include <cmath>
 #include <map>
 #include <set>
+#include <list>
+
+using namespace std;
 
 int main() {
-    std::string line;
-    std::map<std::string, std::multiset<int>> sets;
+    string line;
+    map<string, list<int>> sets;
 
-    std::getline(std::cin, line);
+    getline(cin, line);
 
-    std::string set_name;
-    std::istringstream iss(line);
-    for (std::string s; iss >> s;) {
+    string set_name;
+    istringstream iss(line);
+    for (string s; iss >> s;) {
         if(!set_name.empty()) {
             if ( sets.find(set_name) == sets.end() ) {
                 // not found
-                std::multiset<int> new_set;
-                new_set.insert(stoi(s));
+                list<int> new_set;
+                new_set.insert(new_set.end(),stoi(s));
                 sets[set_name] = new_set;
             } else {
-                sets[set_name].insert(stoi(s));
+                sets[set_name].insert(sets[set_name].end(),stoi(s));
             }
             set_name = "";
         }
@@ -33,11 +36,36 @@ int main() {
         }
     }
 
-    for (const auto& p : sets) {
+    bool test = true;
 
-        std::stringstream  s;
-        copy(p.second.begin(),p.second.end(), std::ostream_iterator<int>(s," "));
-        std::cout<<s.str();
+    list<int> printing_set;
+
+    while(test) {
+        for(auto it = sets.begin(); it != sets.end(); ++it) {
+
+            if(!it->second.empty()) {
+                int v = *it->second.begin();
+                printing_set.insert(printing_set.end(), v);
+                it->second.erase(it->second.begin());
+            }
+
+        }
+
+        test = false;
+        for(auto it = sets.begin(); it != sets.end(); ++it) {
+
+            if(!it->second.empty()) {
+                test = true;
+            }
+
+        }
+
 
     }
+
+    std::stringstream  s;
+    copy(printing_set.begin(),printing_set.end(), std::ostream_iterator<int>(s," "));
+    std::cout<<s.str();
+
+
 }
