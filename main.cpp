@@ -1,79 +1,99 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include <sstream>
-#include <iterator>
-#include <algorithm>
-#include <cmath>
-#include <map>
-#include <set>
-#include <list>
+#include <regex>
 
 using namespace std;
 
+
+int gcd(int a, int b)
+{
+    if (a == 0)
+        return b;
+    return gcd(b % a, a);
+}
+
+class fraction {
+private:
+    int  numerator;
+    int denominator;
+public:
+    // Class constructor
+    fraction(int n, int d);
+    // Methods to update the fraction
+    void add(fraction f);
+    void mult(fraction f);
+    void div(fraction f);
+    // Display method
+    void display(void);
+
+    void simplify();
+};
+
+fraction::fraction(int n, int d) {
+    numerator = n;
+    denominator = d;
+}
+
+void fraction::add(fraction f) {
+    int d = gcd(denominator, f.denominator);
+    d = (denominator * f.denominator) / d;
+
+    int n = numerator * (d / denominator) + f.numerator * (d / f.denominator);
+
+    numerator = n;
+    denominator = d;
+    simplify();
+}
+
+void fraction::mult(fraction f) {
+    numerator = numerator * f.numerator;
+    denominator = denominator * f.denominator;
+    simplify();
+}
+
+void fraction::div(fraction f) {
+    this->mult(fraction(f.denominator,f.numerator));
+}
+
+void fraction::display(void) {
+    cout<<this->numerator<<" / "<<this->denominator<<endl;
+}
+
+void fraction::simplify()
+{
+    int common_factor = gcd(numerator, denominator);
+
+    numerator = numerator / common_factor;
+    denominator = denominator / common_factor;
+}
+
+
 int main() {
     string line;
-    map<string, list<int>> sets;
 
-    getline(cin, line);
+    regex rgx(R"(^(\d+)\s\/\s(\d+)\s(div|[*+])\s(\d+)\s\/\s(\d+)$)");
 
-    string set_name;
-    istringstream iss(line);
-    for (string s; iss >> s;) {
-        if(!set_name.empty()) {
-            if ( sets.find(set_name) == sets.end() ) {
-                // not found
-                list<int> new_set;
-                new_set.insert(new_set.end(),stoi(s));
-                sets[set_name] = new_set;
-            } else {
-                sets[set_name].insert(sets[set_name].end(),stoi(s));
+    smatch matches;
+
+    for (std::string line; std::getline(std::cin, line);) {
+        if(regex_search(line, matches, rgx)) {
+
+            fraction fr0 = fraction(stoi(matches[1].str()), stoi(matches[2].str()));
+            fraction fr1 = fraction(stoi(matches[4].str()), stoi(matches[5].str()));
+
+            if(matches[3].str() == "*") {
+                fr0.mult(fr1);
             }
-            set_name = "";
-        }
-        else {
-            set_name = s;
+            else if(matches[3].str() == "+") {
+                fr0.add(fr1);
+            }
+            else if(matches[3].str() == "div") {
+                fr0.div(fr1);
+            }
+
+            fr0.display();
+
         }
     }
-
-
-
-    bool test = true;
-
-    int sum = 0;
-
-    while(test) {
-        int current = 1;
-        for(auto it = sets.begin(); it != sets.end(); ++it) {
-
-            if(!it->second.empty()) {
-                int v = *it->second.begin();
-
-                current *= v;
-
-                it->second.erase(it->second.begin());
-            }
-            else {
-                current = 0;
-            }
-
-        }
-        sum  += current;
-        current = 0;
-
-        test = false;
-        for(auto it = sets.begin(); it != sets.end(); ++it) {
-
-            if(!it->second.empty()) {
-                test = true;
-            }
-
-        }
-
-
-    }
-
-    cout<<sum;
-
 
 }
