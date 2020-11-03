@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/cpp_02393E.dir/main.cpp.o"
+  "CMakeFiles/cpp_02393E.dir/vector2d.cpp.o"
   "cpp_02393E.pdb"
   "cpp_02393E"
 )

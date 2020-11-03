@@ -9,8 +9,14 @@
 /home/mp/Projects/cpp_02393E/main.cpp
 iostream
 -
-string
+vector2d.h
+/home/mp/Projects/cpp_02393E/vector2d.h
+
+/home/mp/Projects/cpp_02393E/vector2d.cpp
+vector2d.h
+/home/mp/Projects/cpp_02393E/vector2d.h
+cmath
 -
-vector
--
+
+/home/mp/Projects/cpp_02393E/vector2d.h
 

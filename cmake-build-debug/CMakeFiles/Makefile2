@@ -71,7 +71,7 @@ CMAKE_BINARY_DIR = /home/mp/Projects/cpp_02393E/cmake-build-debug
 CMakeFiles/cpp_02393E.dir/all:
 	$(MAKE) -f CMakeFiles/cpp_02393E.dir/build.make CMakeFiles/cpp_02393E.dir/depend
 	$(MAKE) -f CMakeFiles/cpp_02393E.dir/build.make CMakeFiles/cpp_02393E.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mp/Projects/cpp_02393E/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target cpp_02393E"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mp/Projects/cpp_02393E/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target cpp_02393E"
 .PHONY : CMakeFiles/cpp_02393E.dir/all
 
 # Include target in all.
@@ -81,7 +81,7 @@ all: CMakeFiles/cpp_02393E.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cpp_02393E.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mp/Projects/cpp_02393E/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mp/Projects/cpp_02393E/cmake-build-debug/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/cpp_02393E.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/mp/Projects/cpp_02393E/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/cpp_02393E.dir/rule
