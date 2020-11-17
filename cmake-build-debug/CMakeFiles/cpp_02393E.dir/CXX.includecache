@@ -7,16 +7,14 @@
 #IncludeRegexTransform: 
 
 /home/mp/Projects/cpp_02393E/main.cpp
+string
+-
 iostream
 -
-vector2d.h
-/home/mp/Projects/cpp_02393E/vector2d.h
-
-/home/mp/Projects/cpp_02393E/vector2d.cpp
-vector2d.h
-/home/mp/Projects/cpp_02393E/vector2d.h
-cmath
+sstream
 -
-
-/home/mp/Projects/cpp_02393E/vector2d.h
+algorithm
+-
+vector
+-
 

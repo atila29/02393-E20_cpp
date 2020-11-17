@@ -2,15 +2,13 @@
 #include <iostream>
 #include <sstream>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
-long d(string u, string v);
 
 
-long f(char e, char e1);
-
-string replace(string s);
+vector<int> rec_reverse(vector<int> v);
 
 int main(){
 
@@ -21,44 +19,38 @@ int main(){
 
     const char delim = ' ';
 
+    vector<int> v;
 
     stringstream ss(line);
 
-    string word1;
-    getline(ss, word1, delim);
+    string word;
 
+    while(getline(ss, word, delim)){
+        v.push_back(stoi(word));
+    }
+    vector<int> reversed = rec_reverse(v);
 
-    string word2;
-    getline(ss, word2, delim);
-
-    cout << d(word1, word2);
-
-    
-    return 0;
+    for(auto i : reversed) {
+        cout<< i << " ";
+    }
 }
 
-long d(const string u, const string v) {
+vector<int> rec_reverse(vector<int> v) {
 
-    if(u.length() == 0)
-        return v.length();
-    if(v.length() == 0)
-        return u.length();
+    if(v.size() <= 1)
+        return v;
 
 
-    long a = d(replace(u), v) + 1;
-    long b = d(u, replace(v)) + 1;
-    long c = d(replace(u), replace(v)) + f(u[0], v[0]);
+    vector<int> reversed;
+    reversed.push_back(v.back());
+    v.pop_back();
 
-    return min({a,b,c});
-}
-
-string replace(const string s) {
-    string tmp = s;
-    return tmp.replace(0,1,"");
-}
+    vector<int> next_vector = rec_reverse(v);
 
 
-long f(char e, char e1) {
-    return e == e1 ? 0 : 1;
+    reversed.insert(reversed.end(), next_vector.begin(), next_vector.end());
+
+    return reversed;
+
 }
 

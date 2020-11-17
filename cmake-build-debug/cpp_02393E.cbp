@@ -85,6 +85,12 @@
 		<Unit filename="/home/mp/Projects/cpp_02393E/main.cpp">
 			<Option target="cpp_02393E"/>
 		</Unit>
+		<Unit filename="/home/mp/Projects/cpp_02393E/shapes.cpp">
+			<Option target="cpp_02393E"/>
+		</Unit>
+		<Unit filename="/home/mp/Projects/cpp_02393E/shapes.h">
+			<Option target="cpp_02393E"/>
+		</Unit>
 		<Unit filename="/home/mp/Projects/cpp_02393E/vector2d.cpp">
 			<Option target="cpp_02393E"/>
 		</Unit>

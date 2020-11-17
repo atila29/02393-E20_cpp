@@ -150,6 +150,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/cpp_02393E.dir/build.make CMakeFiles/cpp_02393E.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+shapes.o: shapes.cpp.o
+
+.PHONY : shapes.o
+
+# target to build an object file
+shapes.cpp.o:
+	$(MAKE) -f CMakeFiles/cpp_02393E.dir/build.make CMakeFiles/cpp_02393E.dir/shapes.cpp.o
+.PHONY : shapes.cpp.o
+
+shapes.i: shapes.cpp.i
+
+.PHONY : shapes.i
+
+# target to preprocess a source file
+shapes.cpp.i:
+	$(MAKE) -f CMakeFiles/cpp_02393E.dir/build.make CMakeFiles/cpp_02393E.dir/shapes.cpp.i
+.PHONY : shapes.cpp.i
+
+shapes.s: shapes.cpp.s
+
+.PHONY : shapes.s
+
+# target to generate assembly for a file
+shapes.cpp.s:
+	$(MAKE) -f CMakeFiles/cpp_02393E.dir/build.make CMakeFiles/cpp_02393E.dir/shapes.cpp.s
+.PHONY : shapes.cpp.s
+
 vector2d.o: vector2d.cpp.o
 
 .PHONY : vector2d.o
@@ -189,6 +216,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... shapes.o"
+	@echo "... shapes.i"
+	@echo "... shapes.s"
 	@echo "... vector2d.o"
 	@echo "... vector2d.i"
 	@echo "... vector2d.s"

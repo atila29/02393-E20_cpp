@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/mp/Projects/cpp_02393E/main.cpp" "/home/mp/Projects/cpp_02393E/cmake-build-debug/CMakeFiles/cpp_02393E.dir/main.cpp.o"
+  "/home/mp/Projects/cpp_02393E/shapes.cpp" "/home/mp/Projects/cpp_02393E/cmake-build-debug/CMakeFiles/cpp_02393E.dir/shapes.cpp.o"
   "/home/mp/Projects/cpp_02393E/vector2d.cpp" "/home/mp/Projects/cpp_02393E/cmake-build-debug/CMakeFiles/cpp_02393E.dir/vector2d.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
